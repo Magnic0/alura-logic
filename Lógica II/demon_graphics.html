@@ -1,0 +1,45 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+
+    function drawRect(x, y, hei, col) {
+
+        pencil.fillStyle = col;
+        pencil.fillRect(x, y, 50, hei);
+        pencil.strokeStyle = 'black';
+        pencil.strokeRect(x, y, 50, hei);
+    }
+
+    function drawTex(text, x, y){
+
+        pencil.font = '15px Georgia';
+        pencil.fillStyle = 'black';
+        pencil.fillText(text, x, y - 10);
+    }
+
+    function drawBar(x, y, serie, cols, text) {
+
+        drawTex(text, x, y);
+
+        var sumHei = 0;
+
+        for(var t = 0; t < serie.length; t++) {
+
+            var hei = serie[t];
+            drawRect(x, y + sumHei, hei, cols[t]);
+            sumHei = sumHei + hei;
+        }
+    }
+
+    var s2015 = [50, 25, 20, 5];
+    var s2016 = [65, 20, 13, 2];
+    var cols = ['blue', 'green', 'yellow', 'red'];
+
+    drawBar(50, 50, s2015, cols, '2015');
+    drawBar(150, 50, s2016, cols, '2016');
+    
+
+</script>

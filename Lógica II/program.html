@@ -1,0 +1,28 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var screen = document.querySelector('canvas');
+    var pencil = screen.getContext('2d');
+
+    pencil.fillStyle = '#009c3b';
+    pencil.fillRect(0, 0, 600, 400);
+
+    pencil.fillStyle = '#ffdf00';
+    pencil.beginPath();
+    pencil.moveTo(50, 200);
+    pencil.lineTo(300, 50);
+    pencil.lineTo(300, 350);
+    pencil.fill();
+
+    pencil.moveTo(550, 200);
+    pencil.lineTo(300, 50);
+    pencil.lineTo(300, 350);
+    pencil.fill();
+
+    pencil.fillStyle = '#002776';
+    pencil.beginPath();
+    pencil.arc(300, 200, 95, 0, 2 * 3.14);
+    pencil.fill();
+    
+    </script>

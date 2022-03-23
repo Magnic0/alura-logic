@@ -1,0 +1,38 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+
+    pencil.fillStyle = 'lightgray';
+    pencil.fillRect(0, 0, 600, 400);
+
+    var ray = 10;
+
+    function drawCircle(x, y, ray, cor) {
+
+        pencil.fillStyle = cor;
+        pencil.beginPath();
+        pencil.arc(x, y, ray, 0, 2 * Math.PI);
+        pencil.fill();
+    }
+
+    drawCircle(300,200, ray + 20, 'red'); // major circle
+    drawCircle(300,200, ray + 10, 'white');
+    drawCircle(300,200, ray, 'red'); // minor circle
+
+    function shoot(event) {
+
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        if(x <= 310, x >= 290, y <= 210, y >= 190) {
+
+            alert('Right in the fly!');
+        }
+    }
+
+    canvas.onclick = shoot;
+
+</script>

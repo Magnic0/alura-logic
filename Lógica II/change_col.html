@@ -1,0 +1,85 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    alert('Tutorial:');
+    alert('Click: Dot');
+    alert('Right Click: Change color');
+    alert('Shift click: Increase size');
+    alert('Alt click: Reduce size');
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+    var colors = ['blue', 'red', 'green'];
+    var defCol = 0;
+    var ray = 10;
+    console.log(colors[defCol]); // shows first default color in console
+
+    pencil.fillStyle = 'grey';
+    pencil.fillRect(0, 0, 600, 400);
+
+    function drawCircle(event) {
+
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        if(event.shiftKey == true) {
+
+            ray = ray + 10;
+
+            if(ray >= 40){
+
+                alert('You have reached the size limit!');
+                ray = 40;
+            }
+
+            pencil.fillStyle = colors[defCol];
+            pencil.beginPath();
+            pencil.arc(x, y, ray, 0, 2 * 3.14);
+            pencil.fill();
+        } else {
+
+            if(event.altKey == true){
+
+                ray = ray - 5;
+
+                if(ray < 10) {
+
+                    alert('You have reached the size limit!');
+                    ray = 10;
+                }
+
+                pencil.fillStyle = colors[defCol];
+                pencil.beginPath();
+                pencil.arc(x, y, ray, 0, 2 * 3.14);
+                pencil.fill();
+            }
+
+            pencil.fillStyle = colors[defCol];
+            pencil.beginPath();
+            pencil.arc(x, y, 10, 0, 2 * 3.14);
+            pencil.fill();
+        }
+
+        alert('Pow!');
+        //console.log('X: ' + x + ' Y: ' + y); //shows position clicked
+        console.log(ray);
+    }
+
+    function changeCol() {
+
+        defCol++;
+
+        if(defCol == colors.length) {
+
+            defCol = 0;
+        }
+        alert('Color changed!');
+        console.log(colors[defCol]); //shows default color in console
+        return false; 
+    }
+
+
+    canvas.onclick = drawCircle;
+    canvas.oncontextmenu = changeCol;
+
+</script>

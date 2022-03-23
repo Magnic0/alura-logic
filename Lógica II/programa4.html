@@ -1,0 +1,47 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+
+    pencil.fillStyle = 'white';
+    pencil.fillRect(0, 0, 600, 400);
+
+    function drawCirc(x, y, ray) {
+
+        pencil.fillStyle = 'blue';
+        pencil.beginPath();
+        pencil.arc(x, y, ray, 0, 2 * Math.PI);
+        pencil.fill();
+    }
+
+    function clearCan() {
+
+        pencil.clearRect(0, 0, 600, 400);
+    }
+
+    var x = 20;
+    var way = 1;
+
+    function updateCan() {
+
+        clearCan();
+
+        if(x > 580) {
+
+            way = -1;
+        }
+        
+        if(x < 20) {
+
+            way = 1;
+        }
+
+        drawCirc(x, 20, 10);
+        x = x + way;
+    }
+
+    setInterval(updateCan, 5);
+
+</script>

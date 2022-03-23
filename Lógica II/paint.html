@@ -1,0 +1,45 @@
+<canvas width="600" height="400"></canvas>
+
+<br>
+Choose your color: <input type='color'>
+
+<br>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+    var input = document.querySelector('input');
+    var click = false;
+
+    pencil.fillStyle = 'lightgrey';
+    pencil.fillRect(0, 0, 600, 400);
+
+    function drawDot(event) {
+
+        if(click) {
+
+            var x = event.offsetX;
+            var y = event.offsetY;
+
+            pencil.fillStyle = input.value;
+            pencil.beginPath();
+            pencil.arc(x, y, 10, 0, 2 * 3.14);
+            pencil.fill();
+            //console.log('X: ' + x + ' Y: ' + y);
+        }
+    }
+
+    canvas.onmousemove = drawDot;
+
+    canvas.onmousedown = function() {
+
+        click = true;
+    }
+
+    canvas.onmouseup = function() {
+
+        click = false;
+    }
+
+</script>

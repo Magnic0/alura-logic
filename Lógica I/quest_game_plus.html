@@ -1,0 +1,84 @@
+<meta charset="utf-8">
+
+<input/>
+<button>Submit</button>
+
+<script>
+
+    function raffleNum() {
+
+        return Math.round(Math.random() * 10);
+    }
+
+    function raffleList(quantity) {
+
+        var secret = [];
+
+        var num = 1;
+
+        while(num <= quantity) {
+
+            var numAlea = raffleNum();
+
+            if(numAlea != 0) {
+
+                var found = false;
+
+                for(var posi = 0; posi < secret.length; posi++) {
+
+                    if(secret[posi] == numAlea) {
+
+                        found = true;
+                    }
+                }
+
+                if(found == false) {
+
+                    secret.push(numAlea);
+                    num++;
+                }
+            }
+            
+        }
+
+        return secret;
+
+    }
+
+    var secret = raffleList(4);
+
+    console.log(secret);
+
+    var input = document.querySelector("input");
+    input.focus();
+    
+    function verify() {
+
+        var found = false;
+
+        for(var posi = 0; posi <= secret.length; posi++) {
+
+            if(input.value == secret[posi]) {
+
+                found = true;
+                alert("You won!");
+                break;
+            }
+
+        }
+
+        if(found == false) {
+
+            alert("You loose!");
+        }
+
+        input.value = "";
+        input.focus();
+
+    }
+
+    var button = document.querySelector("button");
+
+    button.onclick = verify;
+
+</script>

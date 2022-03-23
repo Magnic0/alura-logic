@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<script>
+
+    function splitLine() {
+
+        document.write("<br><br>");
+    }
+    
+    function print(str) {
+
+        document.write(str);
+        splitLine();
+    }
+
+    var numGiv = parseInt(prompt("Digite um número para ver a tabuada:"));
+
+    for(var multiplier = 1; multiplier <= 10; multiplier++) {
+
+        print(numGiv + " vezes " + multiplier + " é igual a: " + (multiplier * numGiv));
+    }
+
+</script>

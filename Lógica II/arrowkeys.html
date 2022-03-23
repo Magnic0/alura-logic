@@ -1,0 +1,75 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+
+    var x = 20;
+    var y = 20;
+
+    var left = 37;
+    var up = 38;
+    var right = 39;
+    var down = 40;
+
+    var tax = 10;
+
+    pencil.fillStyle = 'white';
+    pencil.fillRect(0, 0, 600, 400);
+
+    function drawCirc(x, y, ray, color) {
+
+        pencil.fillStyle = color;
+        pencil.beginPath();
+        pencil.arc(x, y, ray, 0, 2 * Math.PI);
+        pencil.fill();
+    }
+
+    function clearCan() {
+
+        pencil.clearRect(0, 0, 600, 400);
+    }
+
+    function updateCan(color) {
+
+        clearCan();
+        drawCirc(x, y, 20, 'red');
+    }
+
+    setInterval(updateCan, 20);
+
+    function readKey(event) {
+
+        if(event.keyCode == down) {
+
+            y = y + tax;
+        } else if (event.keyCode == up) {
+
+            y = y - tax;
+        } else if (event.keyCode == left) {
+
+            x = x - tax;
+        } else if (event.keyCode == right) {
+
+            x = x + tax;
+        }
+
+        if(x > 600) {
+
+            x = 1;
+        } else if (x < 0) {
+
+            x = 599;
+        } else if (y > 400) {
+
+            y = 1;
+        } else if (y < 0) {
+
+            y = 399;
+        }
+        console.log('X: ' + x + ' Y: ' + y);
+    }
+
+    document.onkeydown = readKey;
+</script>

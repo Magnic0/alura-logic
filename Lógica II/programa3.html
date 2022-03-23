@@ -1,0 +1,33 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+    pencil.fillStyle = 'grey';
+    pencil.fillRect(0, 0, 600, 400);
+
+    function drawBox(x, y, col) {   
+
+        pencil.fillStyle = col;
+        pencil.fillRect(x, y, 50, 50);
+    }
+
+    function showAlert(event) {
+
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        pencil.fillStyle = 'yellow';
+        pencil.beginPath();
+        pencil.arc(x, y, 10, 0, 2 * 3.14);
+        pencil.fill();
+
+        alert('Pow!');
+        console.log(x, y);
+    }
+
+    canvas.onclick = showAlert;
+
+</script>

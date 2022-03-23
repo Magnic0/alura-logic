@@ -1,0 +1,32 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');  
+    pencil.fillStyle = 'lightgrey'
+    pencil.fillRect(0, 0, 600, 400);
+
+    function drawCircle(x, y, ray, col) {   
+
+        pencil.fillStyle = col;
+        pencil.beginPath();
+        pencil.arc(x, y, ray, 0, 2 * 3.14);
+        pencil.fill();
+        pencil.strokeStyle = 'black';
+        pencil.stroke();
+    }
+
+    drawCircle(320, 200, 10, 'yellow');
+    drawCircle(280, 200, 10, 'yellow');
+    drawCircle(300, 180, 10, 'yellow');
+    drawCircle(300, 220, 10, 'yellow');
+
+    drawCircle(310, 210, 10, 'yellow');
+    drawCircle(310, 190, 10, 'yellow');
+    drawCircle(290, 190, 10, 'yellow');
+    drawCircle(290, 210, 10, 'yellow');
+
+    drawCircle(300, 200, 8, 'brown');
+
+</script>

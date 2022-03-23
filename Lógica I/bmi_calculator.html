@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function splitLine() {
+        
+        document.write("<br><br>");
+        
+    }
+
+    function print(phr) {
+        
+        document.write(phr);
+        splitLine();
+        
+    }
+    
+    function imc(wei, hei) {
+         
+        return wei / (hei ** 2);
+        
+    }
+
+    var weiGiven = prompt("Informe seu peso:");
+    var heiGiven = prompt("Informe sua altura:");
+    
+    print("Seu IMC é: " + Math.round(imc(weiGiven, heiGiven)));
+    
+</script> 

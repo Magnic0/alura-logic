@@ -1,0 +1,24 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function drawBox(x, y, col) {   
+
+        var canvas = document.querySelector('canvas');
+        var pencil = canvas.getContext('2d');
+
+        pencil.fillStyle = col;
+        pencil.fillRect(x, y, 50, 50);
+    }
+
+    var x = 0;
+
+    while(x < 200) {
+
+        drawBox(x, 0, 'black');
+        drawBox(x, 50, 'red');
+        drawBox(x, 100, 'yellow');
+        x = x + 50;
+    }
+
+</script>

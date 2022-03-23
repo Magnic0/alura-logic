@@ -1,0 +1,92 @@
+<meta charset="UTF-8">
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function drawBox(x, y, size, cor) {
+
+        pencil.fillStyle = cor;
+        pencil.fillRect(x, y, size, size)
+        pencil.fill();
+    }
+
+    function drawCircle(x, y, ray, cor) {
+
+        pencil.fillStyle = cor;
+        pencil.beginPath();
+        pencil.arc(x, y, ray, 0, 2 * 3.14);
+        pencil.fill();
+
+    }
+
+    function colorPalette() {
+
+        drawBox(xRed, yBox, boxSize, 'red');
+        drawBox(xGreen, yBox, boxSize, 'green');
+        drawBox(xBlue, yBox, boxSize, 'blue');
+
+    }
+
+    function mouseMovement(event) {
+
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        if(y > yBox && y < yBox + boxSize) {
+
+            if (x > xRed && x < xRed + boxSize) {
+
+                currentCol = 'red';
+            } else if(x > xGreen && x < xGreen + boxSize) {
+
+                currentCol = 'green';
+            } else if(x > xBlue && x < xBlue + boxSize) {
+
+                currentCol = 'blue';
+            }
+        }
+
+        if(x < 105 && y < 55) {
+
+            draw = false;
+        }
+
+        if(draw) {
+
+            drawCircle(x, y, 5, currentCol);
+        }
+    }
+
+    function drawOn() {
+
+        draw = true;
+    }
+
+    function drawOff() {
+
+        draw = false;
+    }
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+    pencil.fillStyle = 'lightgray';
+    pencil.fillRect(0, 0, 600, 400);
+
+    var draw = false;
+    var currentCol = 'blue';
+    var xRed = 0;
+    var xGreen  = 50;
+    var xBlue = 100;
+    var yBox = 0;
+    var boxSize = 50;
+
+    colorPalette(); // mostra os quadrados de seleção de cores
+
+    canvas.onmousemove = mouseMovement;
+
+    canvas.onmousedown = drawOn;
+
+    canvas.onmouseup = drawOff;
+
+</script>

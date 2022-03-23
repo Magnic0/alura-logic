@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<script>
+
+    function splitLine() {
+
+        document.write("<br><br>");
+    }
+    
+    function print(str) {
+
+        document.write(str);
+        splitLine();
+    }
+
+    // Acima temos as funções básicas para o funcionamento otimizado do programa.
+    
+    var num = Math.round(Math.random() * 10);
+    var maxTry = 3;
+
+    while(maxTry > 0) {
+
+        var numTry = parseInt(prompt("Chute um número de 0 a 10:"));
+
+        if(num == numTry) {
+
+            print("<h1>Parabéns, você acertou!</h1>");
+            break;
+        } else {
+
+            maxTry--
+
+            if(maxTry == 0) {
+                
+                print("<h2>Você errou! O número pensado era: " + num + "</h2>");
+            } 
+        }
+    }
+
+</script>

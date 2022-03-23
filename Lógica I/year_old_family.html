@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<script>
+
+    function splitLine() {
+
+        document.write("<br><br>");
+    }
+    
+    function print(str) {
+
+        document.write(str);
+        splitLine();
+    }
+
+    // Acima temos as funções básicas para o funcionamento otimizado do programa.
+    
+    var totalFami = parseInt(prompt("Quantidade de familiares?"));
+    var num = 1;
+    var totalOld = 0;
+
+    while(num <= totalFami) {
+
+        var famiOld = parseInt(prompt("Informe a idade do " + num + "º familiar:"));
+        totalOld = totalOld + famiOld;
+        num++;
+    }
+
+    var med = totalOld / totalFami;
+
+    print("A média de idade dos familiares é " + med);
+    print("Fim.");
+
+</script>

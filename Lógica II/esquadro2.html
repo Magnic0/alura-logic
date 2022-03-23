@@ -1,0 +1,21 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    function drawSquare(xa, ya, xc, yc, col) {
+
+        pincel.fillStyle = col;
+        pincel.beginPath();
+        pincel.moveTo(xa, ya);
+        pincel.lineTo(xa, yc);
+        pincel.lineTo(xc, yc);
+        pincel.fill();
+    }
+
+    drawSquare(50, 50, 400, 400, 'black');
+    drawSquare(100, 175, 275, 350, 'white')
+
+</script>

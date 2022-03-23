@@ -1,0 +1,63 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var canvas = document.querySelector('canvas');
+    var pencil = canvas.getContext('2d');
+
+    pencil.fillStyle = 'lightgray';
+    pencil.fillRect(0, 0, 600, 400);
+
+    var ray = 10;
+    var xRandom;
+    var yRandom;
+    var speed = prompt('Type the speed in milliseconds, recomended is 500:');
+
+    function drawCircle(x, y, ray, cor) {
+
+        pencil.fillStyle = cor;
+        pencil.beginPath();
+        pencil.arc(x, y, ray, 0, 2 * Math.PI);
+        pencil.fill();
+    }
+
+    function drawTarget(x, y) {
+
+        drawCircle(x, y, ray + 20, 'red'); // major circle
+        drawCircle(x, y, ray + 10, 'white');
+        drawCircle(x, y, ray, 'red'); // minor circle
+    }
+
+    function randomPos(max) {
+
+        return Math.floor(Math.random() * max)
+    }
+
+    function updateCan() {
+
+        pencil.fillStyle = 'lightgray';
+        pencil.fillRect(0, 0, 600, 400);
+
+        xRandom = randomPos(600);
+        yRandom = randomPos(400);
+        drawTarget(xRandom, yRandom);
+    }
+
+    function shoot(event) {
+
+        var x = event.offsetX;
+        var y = event.offsetY;
+
+        if((x > xRandom - ray)
+            && (x < xRandom + ray)
+            && (y > yRandom - ray)
+            && (y < yRandom + ray)) {
+
+            alert('Nailed it!');
+        }
+    }
+
+    setInterval(updateCan, speed);
+    canvas.onclick = shoot;
+
+</script>

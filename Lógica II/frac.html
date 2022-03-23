@@ -1,0 +1,37 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    function drawBox(x, y) {   
+
+        var canvas = document.querySelector('canvas');
+        var pencil = canvas.getContext('2d');  
+        
+        pencil.fillStyle = 'green';
+        pencil.fillRect(x, y, 50, 50);
+    }
+
+    function drawStroke(x, y) {
+
+        var canvas = document.querySelector('canvas');
+        var pencil = canvas.getContext('2d');  
+
+        pencil.strokeRect(x, y, 50, 50);
+    }
+
+    var x = 0;
+
+    while(x < 150) {
+
+        drawBox(x, 0);
+        x = x + 50;
+    }
+
+    var x = 0;
+
+    while(x < 200) {
+
+        drawStroke(x, 0);
+        x = x + 50;
+    }
+</script>

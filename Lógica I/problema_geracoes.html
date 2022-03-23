@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+
+<script>
+
+    function split() {
+        
+        document.write("<br>");
+        
+    }
+
+    function print(phr) {
+        
+        document.write(phr);
+        split();
+        
+    }
+    
+    var today = 2022
+    var yester = 1500
+    var years = today - yester;
+    var gen = years / 28;
+    
+    print("<h1>O problema das gerações</h1>")
+    print("Já se passaram aproximadamente " + Math.round(gen) + " gerações desde " + yester + "!")
+    
+</script>
